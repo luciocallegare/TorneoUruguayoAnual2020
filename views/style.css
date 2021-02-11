@@ -1,0 +1,72 @@
+*{
+    top: 0px;
+    margin: 0px;
+}
+h1{
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 20px;
+    font-size: 50px;
+    color: whitesmoke;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse:collapse;
+    text-align: center;
+    width: 100%;
+}
+
+td,th{
+    padding: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+tr:hover{
+    background-color: #ddd;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+caption{
+    font-size: 30px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+form{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+th{
+    background-color: cornflowerblue;
+    color: cornsilk;
+}
+p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+input[type=submit]{
+    background-color: #ddd;
+    border: none;
+    color: rgb(8, 8, 8);
+    padding: 2px 15px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
