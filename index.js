@@ -42,7 +42,7 @@ async function updateDB(tab){
             .catch(err=>console.error(err));
     else{
         for (let p of tab){
-            posicion.replaceOne({pos:p.pos,played:{$ne:p.played}},p)
+            posicion.replaceOne({$or:[{pos:p.pos,played:{$ne:p.played}},{pos:p.pos,clubName:{$ne:p.clubName}}]},p)
                 .then(db=>console.log('Dato actualizado correctamente'))
                 .catch(err=>console.error(err));
         }
