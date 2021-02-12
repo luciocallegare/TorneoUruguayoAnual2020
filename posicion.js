@@ -4,6 +4,7 @@ const Schema= mongoose.Schema;
 const posicionSchema=new Schema({
     pos: Number,
     clubName: String,
+    imgUrl:String,
     played: Number,
     wins :Number,
     ties: Number,
