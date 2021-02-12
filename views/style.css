@@ -5,6 +5,9 @@
 td{
     overflow: hidden;
 }
+td.nombre{
+    width: 64px;
+}
 h1{
     text-align: center;
     background-color: cornflowerblue;
