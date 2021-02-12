@@ -17,7 +17,7 @@
     </form>
     <table border="1">
         <caption>Torneo anual 2020</caption>
-        <tr>
+        <tr class="original">
             <th>Posicion</th>
             <th>Club</th>
             <th>Partidos Jugados</th>
@@ -27,10 +27,20 @@
             <th>Diferencia de goles</th>
             <th>Puntos</th>
         </tr>
+        <tr class="cellphone">
+            <th>Pos</th>
+            <th>CLub</th>
+            <th>J</th>
+            <th>G</th>
+            <th>E</th>
+            <th>P</th>
+            <th>DG</th>
+            <th>Pts</th>
+        </tr>
         <% data.posiciones.forEach(function (posiciones){ %>
             <tr>
                 <td><%=posiciones.pos %></td>
-                <td><%=posiciones.clubName %></td>
+                <td><img src=<%=posiciones.imgUrl %> alt=<%=posiciones.clubName %>><%=posiciones.clubName %> </td>
                 <td><%=posiciones.played %></td>
                 <td><%=posiciones.wins %></td>
                 <td><%=posiciones.ties %></td>
