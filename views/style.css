@@ -11,6 +11,14 @@ h1{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+ .cellphone{
+    display: none;
+}
+
+img{
+    width: 20px;
+    padding-right: 5px;
+}
 table{
     font-family: Arial, Helvetica, sans-serif;
     margin-left: auto;
@@ -69,4 +77,33 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 720px){
+    .original{
+        display: none;
+    }
+    .cellphone{
+        display: table-row;
+    }
+    h1{
+        font-size: 30px;
+    }
+    p,form{
+        font-size: 13px;
+    }
+    input [type=number]{
+        height: 11px;
+        margin-top: 5px;
+    }
+    input [type=submit]{
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+    input{
+        margin-top: 5px;
+    }
+    caption{
+        font-size: 20px;
+    }
 }
