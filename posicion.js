@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema= mongoose.Schema;
 
-const posicionSchema=new Schema({
+/* const posicionSchema=new Schema({
     pos: Number,
     clubName: String,
     imgUrl:String,
@@ -11,8 +11,12 @@ const posicionSchema=new Schema({
     loses:Number,
     gd:Number,
     pts: Number
-});
+}); */
 
-const posicion=mongoose.model('Position',posicionSchema);
+const tablaSchema = new Schema({
+    datos : Array
+})
 
-module.exports=posicion;
+const tabla=mongoose.model('tabla',tablaSchema);
+
+module.exports=tabla;

@@ -1,6 +1,6 @@
 const scrapping=require('./scrapping.js');
 const express = require('express');
-const posicion = require('./posicion');
+const tabla = require('./posicion');
 const bodyParser=require('body-parser');
 
 var x=50000;
@@ -20,9 +20,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Rutas
 app.get('/',(req,res)=>{
     d={};
-    const cursor=posicion.find({},function(err,pos){
+    const cursor=tabla.findOne({},function(err,pos){
+        //console.log(pos.datos);
         d.time=x/1000;
-        d.posiciones=pos;
+        d.posiciones=pos.datos;
         res.render('index.ejs',{data:d});
     });
 });
@@ -35,17 +36,22 @@ app.post('/',(req,res)=>{
 
 //actualizar bd
 async function updateDB(tab){
-    cantDocuments= await posicion.countDocuments();
-    if (cantDocuments==0)
-        posicion.insertMany(tab)
+    cantDocuments= await tabla.countDocuments();
+    const t= new tabla({datos:tab});
+    if (cantDocuments==0){
+        t.save()
             .then(db=>console.log('Datos guardados correctamente'))
             .catch(err=>console.error(err));
+    }
     else{
-        for (let p of tab){
-            posicion.replaceOne({pos:p.pos,$or:[{played:{$ne:p.played}},{clubName:{$ne:p.clubName}}]},p)
-                .then(db=>console.log('Dato actualizado correctamente'))
-                .catch(err=>console.error(err));
-        }
+        // for (let p of tab){
+        //     posicion.replaceOne({$or:[{pos:p.pos,played:{$ne:p.played}},{pos:p.pos,clubName:{$ne:p.clubName}}]},p)
+        //         .then(db=>console.log('Dato actualizado correctamente'))
+        //         .catch(err=>console.error(err));
+        // }
+        tabla.updateOne({},{datos:tab})
+            .then(db=>console.log('Datos actualizados correctamente'))
+            .catch(err=>console.error(err));
     }
 }
 
@@ -63,6 +69,7 @@ async function main(){
 
 
 async function execute(){
+    main();
     while (true){
         await new Promise(resolve=>loop=setTimeout(resolve,x));
         console.log('Datos actualizados cada ',x,' milisegundos');
