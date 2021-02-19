@@ -37,8 +37,8 @@ app.post('/',(req,res)=>{
 //actualizar bd
 async function updateDB(tab){
     cantDocuments= await tabla.countDocuments();
-    const t= new tabla({datos:tab});
     if (cantDocuments==0){
+        const t= new tabla({datos:tab});
         t.save()
             .then(db=>console.log('Datos guardados correctamente'))
             .catch(err=>console.error(err));
