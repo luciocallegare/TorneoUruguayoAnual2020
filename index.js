@@ -32,6 +32,7 @@ app.post('/',(req,res)=>{
     clearTimeout(loop);
     execute();
     console.log('Configuracion de tiempo cambiada a',x,'milisegundos');
+    res.redirect('back');
 })
 
 //actualizar bd
