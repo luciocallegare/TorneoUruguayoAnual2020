@@ -12,7 +12,7 @@
     <p>Datos actualizados cada <%=data.time%> segundos</p>
     <form action="" method="POST">
         <label for="frecuencia">Configurar frecuencia de Atualización en segundos:</label>
-        <input type="number" name="tiempo" >
+        <input type="number" name="tiempo" min="5" max="1000000">
         <input type="submit" name="enviar" value="Enviar">
     </form>
     <table border="1">
