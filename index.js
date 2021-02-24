@@ -2,6 +2,9 @@ const scrapping=require('./scrapping.js');
 const express = require('express');
 const tabla = require('./posicion');
 const bodyParser=require('body-parser');
+const exphbs=require('express-handlebars');
+const path=require('path');
+const { helpers } = require('handlebars');
 
 var x=50000;
 var loop;
@@ -13,18 +16,46 @@ app.set('port',process.env.PORT|| 3000);
 app.listen(app.get('port'),()=>{
     console.log('Server on port',app.get('port'));
 });
-app.set('view engine','ejs');
 app.use(express.static(__dirname + '/views'));
+app.set('views',path.join(__dirname,'views'));
 app.use(bodyParser.urlencoded({ extended: true }));
+//setear motor handlebars
+const hbs = exphbs.create({
+    defaultLayout:'index',
+    layoutsDir:app.get('views'),
+    extname:'.hbs',
+    //helpers
+    helpers: {
+        color:function(lista,item){
+            let fila='';
+            let red=" class='red'";
+            let green=" class='green'";
+            let normal=" class='normal'";
+            for (let i=0;i<lista.length;i++){
+                fila=fila+'<tr';
+                if (i<4)
+                    fila=fila+green;
+                else
+                    if (i>=lista.length-4)
+                        fila=fila+red;
+                    else
+                        fila=fila+normal;
+                fila=fila+'>'+item.fn(lista[i])+'</tr>';
+            }
+            return fila;
+        }
+    }
+})
+app.engine('.hbs',hbs.engine);
+app.set('view engine','.hbs');
 
 //Rutas
 app.get('/',(req,res)=>{
     d={};
     const cursor=tabla.findOne({},function(err,pos){
-        //console.log(pos.datos);
         d.time=x/1000;
         d.posiciones=pos.datos;
-        res.render('index.ejs',{data:d});
+        res.render('index.hbs',{data:d});
     });
 });
 app.post('/',(req,res)=>{

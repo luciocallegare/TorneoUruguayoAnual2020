@@ -11,15 +11,11 @@
   "author": "Lucio Callegare",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
-    "fs-extra": "^9.1.0",
+    "handlebars": "^4.7.7",
     "mongoose": "^5.11.15",
-    "puppeteer": "^7.0.1",
-    "reques": "0.0.1-security",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "puppeteer": "^7.0.1"
   }
 }
